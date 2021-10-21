@@ -5,12 +5,15 @@ import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { useEffect } from 'react'
 import '../styles/index.css'
+import MapboxWorker from 'mapbox-gl/dist/mapbox-gl-csp-worker';
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoia3J6eXNpZWt3aXQiLCJhIjoiY2t1eHhraTMwMzRvZDJwcXIxM3c1a3c1OSJ9.KBCERL0NTvMfr1t9vsmwEg'
 
 const IndexPage = () => {
 
   useEffect(() => {
+    mapboxgl.workerClass = MapboxWorker;
+
     const map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11',
